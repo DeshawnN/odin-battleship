@@ -1,0 +1,23 @@
+{
+  "name": "odin-battleship",
+  "version": "1.0.0",
+  "description": "The Battleship project for the Full-Stack Javascript track of The Odin Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeshawnN/odin-battleship.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeshawnN/odin-battleship/issues"
+  },
+  "homepage": "https://github.com/DeshawnN/odin-battleship#readme",
+  "devDependencies": {
+    "jest": "^27.4.7"
+  }
+}

@@ -13,6 +13,9 @@ function Ship(length) {
         },
         isSunk: function() {
             return this.hits.every((position) => position.hit)
+        },
+        setSunkStatus: function(debugStatus) {
+            this.sunk = (debugStatus) ? debugStatus : this.isSunk();
         }
     }
 }

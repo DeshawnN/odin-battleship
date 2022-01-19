@@ -17,5 +17,19 @@ test("Registers ship sinking w/ all areas hit", () => {
     ship.hit(0);
     ship.hit(1);
     ship.hit(2);
-    expect(ship.isSunk()).toBe(true);
-})
+    expect(ship.sunk).toBe(true);
+});
+
+test("Registers when sunk status is changed", () => {
+    const ship = Ship(3);
+    const ship2 = Ship(3);
+
+    ship.hit(0);
+    ship.hit(1);
+    ship.hit(2);
+
+    ship2.setSunkStatus(true);
+
+    expect(ship.sunk).toBe(true);
+    expect(ship2.sunk).toBe(true);
+});

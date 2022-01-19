@@ -8,14 +8,15 @@ function Ship(length) {
         },
         hit: function(position) {
             if (position > length || position < 0) return;
-            // if (this.hits[position].hit) return;
             this.hits[position].hit = true;
+            this.isSunk();
         },
         isSunk: function() {
-            return this.hits.every((position) => position.hit)
+            const sunkStatus = this.hits.every((position) => position.hit);
+            this.setSunkStatus(sunkStatus);
         },
-        setSunkStatus: function(debugStatus) {
-            this.sunk = (debugStatus) ? debugStatus : this.isSunk();
+        setSunkStatus: function(sunkStatus) {
+            this.sunk = sunkStatus;
         }
     }
 }

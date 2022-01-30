@@ -1,5 +1,5 @@
-const Gameboard = require('./Gameboard');
-const Ship = require('./Ship');
+import Gameboard from '../Gameboard.mjs';
+import Ship from '../Ship.mjs';
 
 test('Can place ship horizontally on gameboard', () => {
     const gameboard = Gameboard();

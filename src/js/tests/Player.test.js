@@ -1,5 +1,5 @@
-const Player = require('./Player');
-const Gameboard = require('./Gameboard');
+import Player from '../Player.mjs';
+import Gameboard from '../Gameboard.mjs';
 
 test('Player can attack gameboard', () => {
     const player = Player();

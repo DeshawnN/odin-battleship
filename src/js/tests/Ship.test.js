@@ -1,4 +1,4 @@
-const Ship = require('./Ship');
+import Ship from '../Ship.mjs';
 
 test("Gets ships length", () => {
     const ship = Ship(3);

@@ -1,4 +1,4 @@
-function Gameboard() {
+export default function Gameboard() {
     return {
         board: new Array(10).fill().map(() => new Array(10)),
         ships: [],
@@ -32,5 +32,3 @@ function Gameboard() {
         }
     }
 }
-
-module.exports = Gameboard

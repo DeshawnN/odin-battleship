@@ -1,4 +1,4 @@
-function Ship(length) {
+export default function Ship(length) {
     return {
         length,
         hits: new Array(length).fill().map(() => ({ hit: false })),
@@ -20,5 +20,3 @@ function Ship(length) {
         }
     }
 }
-
-module.exports = Ship;

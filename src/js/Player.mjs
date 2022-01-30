@@ -1,4 +1,4 @@
-function Player() {
+export default function Player() {
     return {
         sendAttack: function(gameboard, yCoord, xCoord) {
             gameboard.recieveAttack(yCoord, xCoord);
@@ -12,5 +12,3 @@ function Player() {
         }
     }
 }
-
-module.exports = Player;

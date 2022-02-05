@@ -3,8 +3,8 @@ export default function Gameboard() {
         board: new Array(10).fill().map(() => new Array(10)),
         ships: [],
         missed: new Array(10).fill().map(() => new Array(10)),
-        placeShip: function(ship, yCoord, xCoord, orientation) {
-            if (orientation === 'vertical') {
+        placeShip: function(ship, yCoord, xCoord, isVertical) {
+            if (isVertical) {
                 for (let i = 0; i < ship.getLength(); i++) {
                     this.board[yCoord + i][xCoord] = { ship, position: i};
                 }

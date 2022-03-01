@@ -1,0 +1,79 @@
+
+.play-area {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.grid {
+    display: grid;
+}
+
+.rows {
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.board {
+    width: 400px;
+    height: 400px;
+}
+
+.player {
+    background-color: blue;
+}
+
+.computer {
+    background-color: red;
+    align-self: center;
+}
+
+
+.player, .computer {
+    border: 1px solid black;
+}
+
+.rows div {
+    width: 40px;
+    height: 40px;
+}
+
+.columns {
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.ship {
+    background-color: gray;
+}
+
+.grid-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-column .indicator {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.missed {
+    background-color: white;
+}
+
+.hit {
+    background-color: red;
+}
+
+.sunk {
+    background-color: white;
+    opacity: .5;
+    border: 1px dotted black;
+    box-sizing: border-box;
+}
+
+.buttons {
+    margin-top: 10px;
+    display: flex;
+}

@@ -5,7 +5,6 @@ import Renderer from './dom-renderer.js';
 
 
 gameStart();
-
 setupButtons();
 
 function setupButtons() {
@@ -17,13 +16,14 @@ function setupButtons() {
 
 function gameStart() {
     const player = createPlayer();
-    player.generateShips();
 
     const computer = createPlayer();
     computer.generateShips();
 
     const playerArea = document.querySelector('.player');
     Renderer.renderGameBoard(player.gameBoard, 'player', playerArea);
+    generateShipyard(player);
+    addDragDropListeners(player);
     
     const computerArea = document.querySelector('.computer');
     Renderer.renderGameBoard(computer.gameBoard, 'enemy', computerArea);
@@ -153,4 +153,121 @@ function createPlayer() {
     }
 }
 
+function addDragDropListeners(player = null) {
+    let currentDragElement;
+    const shipContainer = document.querySelector('.ships');
+    const shipElements = [...shipContainer.children];
+    const cells = document.querySelectorAll('.player .grid-column');
 
+
+    shipElements.forEach((element) => {
+        element.addEventListener('dragstart', e => {
+            currentDragElement = e.target;
+        });
+    })
+
+    cells.forEach(cell => {
+        cell.addEventListener('dragover', (e) => {
+        
+            e.preventDefault();
+        });
+        
+        cell.addEventListener('drop', (e) => {
+            if (currentDragElement === undefined) return;
+            const [y, x] = e.target.getAttribute('data-coordinates').split(',');
+            const length = +currentDragElement.getAttribute('data-length');
+            const isVertical = (currentDragElement.getAttribute('data-vertical') === "true") ? true : false;
+
+            const ship = Ship(length);
+
+            const shipPlaced = player.gameBoard.placeShip(ship, +y, +x, isVertical);
+
+            if (shipPlaced) {
+                Renderer.renderGameBoard(player.gameBoard, 'player', document.querySelector('.player'));
+                removeShips(shipContainer, currentDragElement);
+                addDragDropListeners(player);
+                currentDragElement = null;
+            }
+        });
+    })
+}
+
+function removeShips(shipContainer, shipToRemove) {
+    const shipType = shipToRemove.dataset.shiptype
+    const ships = [...shipContainer.querySelectorAll(`[data-shiptype="${shipType}"]`)];
+    
+    ships.forEach(ship => {
+        shipContainer.removeChild(ship);
+    });
+}
+
+function generateShipyard() {
+    const shipyard = document.querySelector('.ships');
+
+    shipyard.innerHTML = '';
+    
+    shipyard.innerHTML += `<div data-shipType="carrier" draggable="true" data-length="5" data-vertical="true">
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+    </div>`;
+
+    shipyard.innerHTML += `<div data-shipType="carrier" draggable="true" data-length="5" data-vertical="false">
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+    </div>`;
+
+    shipyard.innerHTML += `<div data-shipType="battleship" draggable="true" data-length="4" data-vertical="true">
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+    </div>`;
+
+    shipyard.innerHTML += `<div data-shipType="battleship" draggable="true" data-length="4" data-vertical="false">
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+    </div>`;
+    
+    shipyard.innerHTML += `<div data-shipType="destroyer" draggable="true" data-length="3" data-vertical="true">
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+    </div>`;
+                
+
+    shipyard.innerHTML += `<div data-shipType="destroyer" draggable="true" data-length="3" data-vertical="false">
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+    </div>`;
+                
+    shipyard.innerHTML += `<div data-shipType="submarine" draggable="true" data-length="3" data-vertical="true">
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+    </div>`;
+                
+    shipyard.innerHTML += `<div data-shipType="submarine" draggable="true" data-length="3" data-vertical="false">
+        <div class="ship"></div>
+        <div class="ship"></div>
+        <div class="ship"></div>
+    </div>`;
+
+    shipyard.innerHTML += `<div data-shipType="patrolBoat" draggable="true" data-length="2" data-vertical="true">
+        <div class="ship"></div>
+        <div class="ship"></div>
+    </div>`;
+
+    shipyard.innerHTML += `<div data-shipType="patrolBoat" draggable="true" data-length="2" data-vertical="false">
+        <div class="ship"></div>
+        <div class="ship"></div>
+    </div>`;
+}

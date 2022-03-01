@@ -4,8 +4,13 @@
   "description": "The Battleship project for the Full-Stack Javascript track of The Odin Project",
   "main": "index.js",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "jest",
     "test-watch": "jest --watch ./js/*.js"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
   },
   "repository": {
     "type": "git",

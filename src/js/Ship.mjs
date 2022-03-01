@@ -13,7 +13,9 @@ export default function Ship(length) {
         },
         isSunk: function() {
             const sunkStatus = this.hits.every((position) => position.hit);
-            this.setSunkStatus(sunkStatus);
+            if (sunkStatus) {
+                this.setSunkStatus(true);
+            }
         },
         setSunkStatus: function(sunkStatus) {
             this.sunk = sunkStatus;

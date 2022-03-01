@@ -1,5 +1,5 @@
-import Gameboard from '../Gameboard.mjs';
-import Ship from '../Ship.mjs';
+import Gameboard from '../Gameboard.js';
+import Ship from '../Ship.js';
 
 test('Can place ship horizontally on gameboard', () => {
     const gameboard = Gameboard();
@@ -30,8 +30,8 @@ test('Register attacks and misses', () => {
     const ship = Ship(3);
 
     gameboard.placeShip(ship, 0,0);
-    gameboard.recieveAttack(0,0);
-    gameboard.recieveAttack(1,0);
+    gameboard.receiveAttack(0,0);
+    gameboard.receiveAttack(1,0);
 
     expect(gameboard.getCoordInfo(0,0).ship.hits[0].hit).toBe(true);
     expect(gameboard.getCoordInfo(1,0).missed).toBe(true);

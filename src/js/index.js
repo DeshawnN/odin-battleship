@@ -1,7 +1,7 @@
-import Player from './Player.mjs';
-import Gameboard from './Gameboard.mjs';
-import Ship from './Ship.mjs';
-import Renderer from './dom-renderer.mjs';
+import Player from './Player.js';
+import Gameboard from './Gameboard.js';
+import Ship from './Ship.js';
+import Renderer from './dom-renderer.js';
 
 
 gameStart();

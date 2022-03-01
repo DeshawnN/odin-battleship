@@ -1,4 +1,4 @@
-import Ship from '../Ship.mjs';
+import Ship from '../Ship.js';
 
 test("Gets ships length", () => {
     const ship = Ship(3);

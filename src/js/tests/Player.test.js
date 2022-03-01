@@ -1,5 +1,5 @@
-import Player from '../Player.mjs';
-import Gameboard from '../Gameboard.mjs';
+import Player from '../Player.js';
+import Gameboard from '../Gameboard.js';
 
 test('Player can attack gameboard', () => {
     const player = Player();
